@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <div class="weather-app" style="background-image: url('<%= sendData.bgImage %>');">
+        <div class="container">
+            <h3 class="place-info"><%= sendData.location %>, <%= sendData.country %></h3>
+            
+            <div>
+                <h1 class="temp"><%= sendData.temp %>&#176;C</h1>
+                
+                <div class="city-time">
+                    <h1 class="name"><%= sendData.location %></h1>
+                    <small>
+                        <span class="date"> <%= new Date().toLocaleDateString(undefined, { weekday: 'long' }) %> <%= new Date().toLocaleDateString() %></span>
+                    </small>
+                </div>
+                <div class="weather">
+                    <img src="<%= sendData.imageUrl %>" class="icon" alt="icon" width="80"/>
+                </div>
+            </div>
+        </div>
+        <div class="panel">
+            <form action="/" method="post" id="locationInput">
+                <input type="text" name="city" id="city" class="search" placeholder="Search for location..." autocomplete="off"/>
+                <button type="submit" class="submit">
+                    <i class="fas fa-search"></i>
+                </button>
+            </form>
+
+
+            <div class="centered-content">
+                <img src="<%= sendData.weatherIcon %>"/>
+                <h3><%= sendData.main %></h3>
+            </div>
+
+            <ul class="details">
+                <h4>Weather Details</h4>
+                <li>
+                    <span>Feels like</span>
+                    <span class="feel"><%= sendData.feel %>&#176;C</span>
+                </li>
+                
+
+                <li>
+                    <span>Humidity</span>
+                    <span class="humidity"><%= sendData.humidity %>%</span>
+                </li>
+                <li>
+                    <span>Wind</span>
+                    <span class="feel speed"><%= sendData.speed %> km/hr</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
